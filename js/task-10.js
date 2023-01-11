@@ -1,7 +1,3 @@
-function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-}
-
 const refs = {
   boxes: document.querySelector('#boxes'),
   input: document.querySelector('input'),
@@ -11,6 +7,7 @@ const refs = {
 let boxesSize = 30;
 
 refs.createBtn.addEventListener('click', createBoxes);
+refs.destroyBtn.addEventListener('click', destroyBoxes);
 
 function createBoxes(amount) {
   const counterBox = Number((amount.currentTarget.value = refs.input.value));
@@ -29,8 +26,6 @@ function createBoxes(amount) {
   }
 }
 
-refs.destroyBtn.addEventListener('click', destroyBoxes);
-
 function destroyBoxes() {
   const newBox = document.querySelectorAll('.new-box');
 
@@ -38,4 +33,10 @@ function destroyBoxes() {
     refs.boxes.removeChild(allBoxes);
     boxesSize = 30;
   }
+}
+
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
 }
