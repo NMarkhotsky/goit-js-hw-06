@@ -11,6 +11,7 @@ refs.destroyBtn.addEventListener('click', destroyBoxes);
 
 function createBoxes(amount) {
   const counterBox = Number((amount.currentTarget.value = refs.input.value));
+  const newBoxElements = [];
 
   for (let i = 0; i < counterBox; i++) {
     boxesSize += 10;
@@ -22,8 +23,11 @@ function createBoxes(amount) {
     newBox.style.height = boxesSize + 'px';
     newBox.style.backgroundColor = getRandomHexColor();
 
-    refs.boxes.append(newBox);
+    newBoxElements.push(newBox);
   }
+
+  refs.boxes.append(...newBoxElements);
+  console.log(newBoxElements);
 }
 
 function destroyBoxes() {
