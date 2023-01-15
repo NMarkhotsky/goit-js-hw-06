@@ -35,6 +35,7 @@ function destroyBoxes() {
 
   for (const allBoxes of newBox) {
     refs.boxes.removeChild(allBoxes);
+    refs.input.value = '';
     boxesSize = 30;
   }
 }
